@@ -53,7 +53,7 @@ function haltOnTimedout(req, res, next) {
 
 
 
-// require('./lib/mongoconnection');
+require('./lib/mongoconnection');
 require('./src/routes/index')(app);
 app.use(errorFilter);
 
