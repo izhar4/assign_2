@@ -17,6 +17,12 @@ async function getCourseList(){
     const courseList = await courseDao.getCourseList();
     return courseList;
 }
+
+async function getCourseByProgram(program){
+    const query = {academicProgram: program}
+    const courseList = await courseDao.getCourseList(query);
+    return courseList;
+}
 // /**
 //  * @description
 //  * Function to create user.
@@ -50,5 +56,6 @@ async function getCourseList(){
 module.exports = {
     getStudentsList,
     getStudentById,
-    getCourseList
+    getCourseList,
+    getCourseByProgram
 };

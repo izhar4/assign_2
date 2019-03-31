@@ -16,5 +16,17 @@ courseController.readCourseList= async (req, res)=>{
     }
 }
 
+courseController.getCourseByProgram = async(req, res)=>{
+    const program = req.params.program;
+    console.log('programmm', program)
+    try{
+        let courseList = await studentService.getCourseByProgram(program);
+        return courseList;
+    }catch(error){
+        throw new CustomError(DB_CONSTANTS.ERROR_MESSAGES.INTERNAL_SERVER_ERROR, 500);
+
+    }
+}
+
 
 module.exports = courseController;

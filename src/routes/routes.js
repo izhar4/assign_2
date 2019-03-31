@@ -34,4 +34,14 @@ router.get('/getStudent/:id', async  (req, res, next)=> {
   }
   
 })
+
+router.get('/course/:program', async  (req, res, next)=> {
+  try{
+    const courseList =  await courseController.getCourseByProgram(req, res);
+    res.status(200).json({data: courseList});
+  }catch(error){
+      next(error);
+  }
+  
+})
 module.exports = router;
