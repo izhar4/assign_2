@@ -30,7 +30,11 @@ const studentSchema = mongoose.Schema({
         courseName: String,
         termCompleted: String,
         gradeEarned: String
-    }]
+    }],
+    coursesSaved : {type: Array},
+    coursesConfirmed: {type: Array}
+
+
 });
 
 module.exports = mongoose.model("students", studentSchema);
