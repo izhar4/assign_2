@@ -42,6 +42,14 @@ router.get('/course/:program', async  (req, res, next)=> {
   }catch(error){
       next(error);
   }
-  
+})
+
+router.post('/student/cart/:studentId', async(req, res, next)=>{
+  try{
+    const courseList =  await studentController.updateStudentSavedCourses(req, res);
+    res.status(200).json({data: courseList});
+  }catch(error){
+      next(error);
+  }
 })
 module.exports = router;

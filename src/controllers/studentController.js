@@ -40,4 +40,16 @@ studentController.getStudentById= async (req, res)=>{
     }
 }
 
+studentController.updateStudentSavedCourses = async(req, res)=>{
+    const studentId = req.params.studentId;
+    const courses = req.body.courses;
+    try{
+        const student = await studentService.updateStudentSavedCourses(studentId, courses);
+        return student;
+    }catch(error){
+        throw new CustomError(DB_CONSTANTS.ERROR_MESSAGES.INTERNAL_SERVER_ERROR, 500);
+
+    }
+}
+
 module.exports = studentController;

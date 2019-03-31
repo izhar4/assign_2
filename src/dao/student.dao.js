@@ -13,6 +13,12 @@ async function getStudentById(id){
     const student = await studentDao.findOne({studentId: id}, {});
     return student;
 }
+
+async function updateStudentData(query, update){
+    const updatePayload = {$set : update }
+    const student = await studentDao.findOneAndUpdate(query, updatePayload);
+    return student;
+}
 // async function createUser(data) {
 //     let query = { provider: data.provider, email: data.email }
 //     let options = {new: true, upsert: true};
@@ -28,5 +34,6 @@ async function getStudentById(id){
 
 module.exports = {
     getStudentsList,
-    getStudentById
+    getStudentById,
+    updateStudentData
 };
