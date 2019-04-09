@@ -31,10 +31,18 @@ async function updateStudentSavedCourses(studentId, courses){
     return student;
 }
 
+async function updateStudentsConfirmedCourses(studentId, courses){
+    const query = {studentId: studentId};
+    const update = {coursesConfirmed: courses, coursesSaved:[] };
+    const student = await studentDao.updateStudentData(query, update);
+    return student;
+}
+
 module.exports = {
     getStudentsList,
     getStudentById,
     getCourseList,
     getCourseByProgram,
-    updateStudentSavedCourses
+    updateStudentSavedCourses,
+    updateStudentsConfirmedCourses
 };
